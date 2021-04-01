@@ -1,0 +1,26 @@
+.form__list {
+width: 100%;
+margin-left: auto;
+margin-right: auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+    font-weight: 600;
+  font-size: 14px;
+  line-height: 1.2;
+ 
+}
+.form__list_button {
+  margin-left: 20px;
+    display: inline-block;
+    align-items: center;
+    margin-top: 5px;
+    text-align: center;
+    background: #ff0081;
+    padding: 7px;
+    border: none;
+    color: #fff;
+    outline: none;
+    overflow: hidden;
+    border-radius: 20px;
+} 
