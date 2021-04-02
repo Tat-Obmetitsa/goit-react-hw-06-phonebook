@@ -36,8 +36,7 @@ class AddContact extends Component {
     if (oldContact) {
       alert(`This name is in contacts.`);
       this.reset();
-      return;
-    } else { this.props.onSubmit(this.state); }
+      return;}
 
     this.reset();
   };
@@ -83,7 +82,7 @@ class AddContact extends Component {
   }
 }
 const mapStateToProps = state => ({
-  state,
+ state,
 });
 const mapDispatchToProps = dispatch => ({
   onSubmit: data => dispatch(contactsActions.addContact(data)),
