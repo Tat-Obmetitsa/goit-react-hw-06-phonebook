@@ -21,7 +21,24 @@ class AddContact extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.props.onSubmit(this.state);
+    const { name } = this.state;
+
+    const oldContact = this.props.state.contacts.items.find(
+      contact => contact.name === name,
+    );
+
+    if ( name !== '') {
+      this.props.onSubmit(this.state);
+    } else {
+      alert ('Type contact name')
+      return
+    }
+    if (oldContact) {
+      alert(`This name is in contacts.`);
+      this.reset();
+      return;
+    } else { this.props.onSubmit(this.state); }
+
     this.reset();
   };
 
@@ -65,8 +82,11 @@ class AddContact extends Component {
     );
   }
 }
+const mapStateToProps = state => ({
+  state,
+});
 const mapDispatchToProps = dispatch => ({
   onSubmit: data => dispatch(contactsActions.addContact(data)),
 });
 
-export default connect(null, mapDispatchToProps)(AddContact);
+export default connect(mapStateToProps, mapDispatchToProps)(AddContact);

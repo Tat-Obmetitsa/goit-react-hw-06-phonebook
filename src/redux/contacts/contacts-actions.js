@@ -16,6 +16,10 @@ const changeFilter = createAction('conatcts/changeFilter');
 export default {addContact, deleteContact, changeFilter};
 
 
+// without Toolkit
+
+// import types from './contacts-types';
+
 // const addContact = (data) => ({
 //     type: types.ADD,
 //     payload: {

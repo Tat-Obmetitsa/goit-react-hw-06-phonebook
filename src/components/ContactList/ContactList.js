@@ -6,10 +6,10 @@ import PropTypes from 'prop-types';
 
 const ContactList = function ({ contacts, deleteContact }) {
   return (
-    <>
-               {contacts.map(e => {
+    <ul>
+         {contacts.map(e => {
           return (
-            <li key={e.id}>
+            <li key={e.id} className={s.form__list}>
               <span>{e.name}: </span>
               <span>{e.number}</span>
               <button
@@ -22,17 +22,16 @@ const ContactList = function ({ contacts, deleteContact }) {
             </li>
           );
         })}
-    </>
+    </ul>
   );
 };
 
-const mapStateToProps = state => ({
-  contacts: state.contacts.items,
-});
-const mapDispatchToProps = dispatch => ({
-  deleteContact: (id) => dispatch(contactsActions.deleteContact(id)), 
-});
-
+const filterContacts = (allContacts, filter) => {
+  const normalizedFilter = filter.toLocaleLowerCase();
+  return allContacts.filter(({name}) =>
+    name.toLowerCase().includes(normalizedFilter),
+  );
+};
 
 ContactList.propTypes = {
   deleteContact: PropTypes.func.isRequired,
@@ -44,5 +43,13 @@ ContactList.propTypes = {
     }),
   ),
 };
+
+const mapStateToProps = ({contacts: {items, filter}}) => ({
+  contacts: filterContacts(items, filter)
+});
+
+const mapDispatchToProps = dispatch => ({
+  deleteContact: (id) => dispatch(contactsActions.deleteContact(id)), 
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(ContactList);

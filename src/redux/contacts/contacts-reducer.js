@@ -18,6 +18,7 @@ export default combineReducers({
 })
 
 
+// without Toolkit
 
 // const items = (state = [], {type, payload}) => { 
 //     switch(type) {
