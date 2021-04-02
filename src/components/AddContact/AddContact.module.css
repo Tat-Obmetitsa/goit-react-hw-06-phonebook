@@ -41,6 +41,7 @@
     overflow: hidden;
     border-radius: 50px;
     font-weight: bold;
+    cursor: pointer;
 }
 .form__button:hover {
     background: #e9cada;
